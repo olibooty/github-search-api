@@ -6,28 +6,47 @@ console.log(oneMonthAgo);
 
 // get the search query ready, with the inputted date
 // and empty string
-const url = `https://api.github.com/search/repositories?q=stars+created:>${oneMonthAgo}+language:`;
+const url = `https://api.github.com/search/repositories?q=stars+created:>${oneMonthAgo}`;
+const lang = "+language:";
 let query = "";
 
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 
 input.focus();
+
 const request = new XMLHttpRequest();
 
 form.onsubmit = () => {
   query = input.value;
+  console.log(query);
 
-  console.log(url + query);
+  // check if input contains empty string
+  // if it does, omit language query
+  if (query === "") {
+    console.log(url + query);
+    request.open('GET', url, true);
+  }
+  else {
+    const fullQuery = `${url}+language:${query}`;
+    console.log(fullQuery);
+    request.open('GET', fullQuery, true);
+  }
 
-  request.open('GET', url + query, true);
   request.send();
 }
 
-request.onreadystatechange = () => {
+request.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    var myArr = JSON.parse(this.responseText);
-    console.log(myArr.items);
+    // Parse JSON
+    const json = JSON.parse(this.responseText)
+    const myArr = json.items;
+    console.log(myArr);
+
+    for (let i = 0; i <= 2; i++) {
+      console.log(myArr[i]);
+      console.log(myArr[i].full_name)
+    }
   }
 }
 
@@ -46,6 +65,3 @@ request.onreadystatechange = () => {
 // request.onerror = function() {
 //   alert("there was an error, GO BACK... GO BACK!")
 // };
-
-
-
