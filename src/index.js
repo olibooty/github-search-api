@@ -56,6 +56,15 @@ request.onreadystatechange = function() {
       console.log(myArr[i].created_at);
       console.log(myArr[i].language);
 
+      let htmlVal = {
+        aHref: myArr[i].html_url,
+        aVal: myArr[i].full_name,
+        pDesc: myArr[i].description,
+        pDate: myArr[i].created_at,
+        pStars: myArr[i].stargazers_count
+      }
+      console.log(htmlVal)
+
 
     }
   }
