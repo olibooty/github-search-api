@@ -1,0 +1,27 @@
+{
+  "name": "github-search-api",
+  "version": "1.0.0",
+  "description": "Github API search - Get the latest and greatest starred repos of the last month",
+  "main": "script.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeedBoot/github-search-api.git"
+  },
+  "author": "Oli Booty || SeedBoot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeedBoot/github-search-api/issues"
+  },
+  "homepage": "https://github.com/SeedBoot/github-search-api#readme",
+  "dependencies": {
+    "moment": "^2.22.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4"
+  }
+}
