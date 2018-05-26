@@ -3,14 +3,13 @@ import moment from "moment";
 const oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
 console.log(oneMonthAgo);
 
-const request = new XMLHttpRequest();
-
 const url = `https://api.github.com/search/repositories?q=stars+created:>${oneMonthAgo}+language:`;
-
 let query = "";
 
 const form = document.getElementById("form");
 const input = document.getElementById("input");
+
+const request = new XMLHttpRequest();
 
 form.onsubmit = () => {
   query = input.value;
