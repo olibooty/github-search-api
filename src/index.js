@@ -1,14 +1,18 @@
 import moment from "moment";
 
+// Use the moment library to get an easily formatted date
 const oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
 console.log(oneMonthAgo);
 
+// get the search query ready, with the inputted date
+// and empty string
 const url = `https://api.github.com/search/repositories?q=stars+created:>${oneMonthAgo}+language:`;
 let query = "";
 
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 
+input.focus();
 const request = new XMLHttpRequest();
 
 form.onsubmit = () => {
