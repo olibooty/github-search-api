@@ -1,3 +1,6 @@
+var oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
+console.log(oneMonthAgo);
+
 var request = new XMLHttpRequest();
 
 var url = "https://api.github.com/search/repositories?q=stars+created:>2018-04-26+language:"
