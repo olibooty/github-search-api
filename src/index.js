@@ -1,18 +1,18 @@
 import moment from "moment";
 
-var oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
+const oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
 console.log(oneMonthAgo);
 
-var request = new XMLHttpRequest();
+const request = new XMLHttpRequest();
 
-var url = "https://api.github.com/search/repositories?q=stars+created:>" + oneMonthAgo + "+language:"
+const url = `https://api.github.com/search/repositories?q=stars+created:>${oneMonthAgo}+language:`;
 
-var query = "";
+let query = "";
 
-var form = document.getElementById("form");
-var input = document.getElementById("input");
+const form = document.getElementById("form");
+const input = document.getElementById("input");
 
-form.onsubmit = function() {
+form.onsubmit = () => {
   query = input.value;
 
   console.log(url + query);
@@ -21,7 +21,7 @@ form.onsubmit = function() {
   request.send();
 }
 
-request.onreadystatechange = function() {
+request.onreadystatechange = () => {
   if (this.readyState == 4 && this.status == 200) {
     var myArr = JSON.parse(this.responseText);
     console.log(myArr.items);
