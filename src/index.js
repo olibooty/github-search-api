@@ -2,38 +2,30 @@ import moment from "moment";
 
 // Use the moment library to get an easily formatted date
 const oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
-console.log(oneMonthAgo);
 const oneMonthFormat = moment().subtract(1, 'month').format('Do MMMM YYYY');
+console.log(oneMonthAgo);
 console.log(oneMonthFormat)
 
 // get the search query ready, with the inputted date
 // and empty string
-let query = "";
-
-// const lang = "+language:";
-
+// let query = "";
 
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 
-
-input.textContent = "";
 input.focus();
 
 const request = new XMLHttpRequest();
 
 form.onsubmit = () => {
-  query = input.value;
+  const query = input.value;
   console.log(query);
 
-  // let url = `https://api.github.com/search/repositories?q=${query}+language:${query}+sort=stars+created:>${oneMonthAgo}`;
-  let url = `https://api.github.com/search/repositories?q=${query}+created:>${oneMonthAgo}&sort=stars`;
+  let url = `https://api.github.com/search/repositories?q=language:${query}+created:>${oneMonthAgo}&sort=stars`;
 
   // check if input contains empty string
-  // if it does, omit language query
+  // if it does, throw alert
   if (query === "") {
-    // console.log(url + query);
-    // request.open('GET', url, true);
     alert("Please enter a valid language");
   }
   else {
@@ -42,10 +34,10 @@ form.onsubmit = () => {
     request.open('GET', url, true);
 
     const heading = document.getElementById("heading");
-    const para = document.querySelector("#listing p");
+    const monthListing = document.querySelector(".month-listing");
 
     heading.textContent = `Most Stars: '${query}'`;
-    para.textContent = `Repos created since ${oneMonthFormat}`;
+    monthListing.textContent = `Repos created since ${oneMonthFormat}`;
 
     request.send();
   }
@@ -62,6 +54,9 @@ request.onreadystatechange = function() {
       console.log(myArr[i]);
       console.log(myArr[i].full_name);
       console.log(myArr[i].created_at);
+      console.log(myArr[i].language);
+
+
     }
   }
 };
@@ -78,6 +73,6 @@ request.onreadystatechange = function() {
 //   }
 // };
 
-// request.onerror = function() {
-//   alert("there was an error, GO BACK... GO BACK!")
-// };
+request.onerror = function() {
+  alert("there was an error, GO BACK... GO BACK!")
+};
