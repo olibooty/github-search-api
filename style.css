@@ -1,0 +1,157 @@
+body {
+  height: 100%;
+  padding-bottom: 25px;
+  margin: 0;
+  background: #272822;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+
+  /* display: flex;
+  flex-direction: column;
+  min-height: 35vh; */
+}
+
+header {
+  padding: 0  0 10px;
+  color: #f8f8f2;
+  text-align: center;
+}
+
+main {
+  width: 85%;
+  max-width: 675px;
+  /* height: 100%; */
+  padding: 1em;
+  border-radius: 4px;
+  margin: 0 auto;
+  background: #f8f8f2;
+  box-shadow: 0 0 20px -2px rgba(26, 188, 156, 0.9);
+  transition: all 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 35vh;
+}
+
+form {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+}
+
+input[type = text] {
+  max-width: 8em;
+  padding: 0.25em;
+  border: solid 1px #dcdcdc;
+  border-radius: 3px;
+  margin-left: auto;
+  background-color: rgba(245, 245, 245, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25em;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+input[type="text"]:focus{
+  border: solid 1px #707070;
+  box-shadow: 0px 1px 5px -1px #969696;
+}
+
+input[type="submit"] {
+  border: none;
+  margin-right: auto;
+  background: rgb(26, 188, 156);
+  color: #fff;
+  line-height: 2.5em;
+}
+
+#listing {
+  border-bottom: 1px solid #ddd;
+}
+
+#listing p {
+  font-weight: 300;
+}
+
+.tile {
+  width: 95%;
+  max-width: 400px;
+  padding: 6px 8px;
+  border: solid 1px #dcdcdc;
+  border-radius: 4px;
+  margin: 15px auto;
+  box-shadow: 0px 0px 4px -3px rgba(0,0,0,0.7);
+  background: #f3f6f0;
+  
+  transition: all 0.3s ease;
+}
+
+.tile:hover {
+  border-color: #707070;
+  box-shadow: 0px 2px 6px -3px rgba(0,0,0,0.7);
+}
+
+a {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+  text-decoration: none;
+}
+a::after,
+a:focus::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+a:hover::after,
+a:focus::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.tile p {
+  margin: 5px 0;
+}
+
+.tile .info {
+  display: flex;
+}
+
+.tile .info p {
+  font-weight: 300;
+}
+
+@media all and (min-width: 360px) {
+  .tile .info p + p {
+    margin-left: auto;
+}
+}
+
+@media all and (max-width: 359px) {
+  .tile .info {
+    flex-direction: column;
+  }
+}
+
+@media all and (min-width: 500px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media all and (min-width: 650px) {
+  main {
+    width: 70%;
+  }
+  .tile {
+    width: 80%;
+  }
+}
