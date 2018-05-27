@@ -1,4 +1,5 @@
 import moment from "moment";
+import axios from 'axios';
 
 // Use the moment library to get an easily formatted date
 const oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
@@ -23,8 +24,17 @@ form.onsubmit = () => {
 
   const url = `https://api.github.com/search/repositories?q=language:${query}+created:>${oneMonthAgo}&sort=stars`;
 
+  // axios.get(url)
+  // .then(function (response) {
+  //   console.log(response.request.response);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+
   // check if input contains empty string
   // if it does, throw alert
+
   if (query === "") {
     alert("Please enter a valid language");
   }
@@ -41,11 +51,12 @@ form.onsubmit = () => {
 
     request.send();
   }
+  return false;
 };
 
 request.onreadystatechange = function() {
-  // if (this.readyState == 4 && this.status == 200) {
-  if (this.readyState == 4) {
+  if (this.readyState == 4 && this.status == 200) {
+  // if (this.readyState == 4) {
     // Parse JSON
     const json = JSON.parse(this.responseText);
     const myArr = json.items;
@@ -80,6 +91,6 @@ request.onreadystatechange = function() {
 //   }
 // };
 
-request.onerror = function() {
-  alert("there was an error, GO BACK... GO BACK!")
-};
+// request.onerror = function() {
+//   alert("there was an error, GO BACK... GO BACK!")
+// };
