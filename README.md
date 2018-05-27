@@ -1,7 +1,7 @@
 # github-search-api
 Hello world! :metal:
 
-This was made with a healthy glug of [Vanilla JS](http://vanilla-js.com/), a sprinkling of [Moment JS](https://momentjs.com/), a dash of [Babel JS](https://babeljs.io/) and a glaze of [Webpack](https://webpack.js.org/).
+This was made with a healthy glug of [Vanilla JS](http://vanilla-js.com/), a handful of [Moment JS](https://momentjs.com/), a dash of [Babel JS](https://babeljs.io/) and a sprinkling of [Webpack](https://webpack.js.org/).
 
 This "app" runs on GitHub pages just fine. You can [view the page here](https://seedboot.github.io/github-search-api/).
 
