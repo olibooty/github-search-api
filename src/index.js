@@ -46,22 +46,17 @@ request.onreadystatechange = function(e) {
     const json = JSON.parse(this.responseText);
     const myArr = json.items;
     console.log(myArr);
+    
+    // Initialising this variable early to
+    // delete previous results if necessary
+    const repos = document.getElementById("repos");
+
+    if (repos.children.length > 0) {
+      repos.innerHTML = "";
+    }
 
     // Here's the fun stuff...
     for (let i = 0; i <= 2; i++) {
-      // Created object to hold repo values
-      const htmlVal = {
-        aHref: myArr[i].html_url,
-        aVal: myArr[i].full_name,
-        pDesc: myArr[i].description,
-        pDate: moment(myArr[i].created_at).format("Do MMMM YYYY"),
-        pStars: myArr[i].stargazers_count
-      }
-
-      for (let val in htmlVal) {
-        console.log(htmlVal[val]);
-      }
-
       // This should save some repitition repitition
       function createPTag(text, parent) {
         const ele = document.createElement("p");
@@ -95,13 +90,12 @@ request.onreadystatechange = function(e) {
       // And add to the parent
       parentDiv.appendChild(childDiv);
 
-      // Now show me the money!
-      const repos = document.getElementById("repos");
+      // Remember the repos const from earlier?
+      // Here it is again! With spaghetti being
+      // appended to it
       repos.appendChild(parentDiv);
     }
-  }
-  else {
-    console.log("There was an error: ", e);
+    console.log(e);
   }
 };
 
