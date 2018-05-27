@@ -1,14 +1,17 @@
 import moment from "moment";
 
 // Use the moment library to get an easily formatted date
-const oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
-const oneMonthFormat = moment().subtract(1, 'month').format('Do MMMM YYYY');
+const oneMonthAgo = moment().subtract(1, "month").format("YYYY-MM-DD");
+const oneMonthFormat = moment().subtract(1, "month").format("Do MMMM YYYY");
 console.log(oneMonthAgo);
 console.log(oneMonthFormat);
 
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 
+// Just in case, blank out the search
+// and focus the cursor onto it
+input.value = "";
 input.focus();
 
 const request = new XMLHttpRequest();
@@ -51,6 +54,7 @@ request.onreadystatechange = function(e) {
     // delete previous results if necessary
     const repos = document.getElementById("repos");
 
+    // reset the search if search has been searched
     if (repos.children.length > 0) {
       repos.innerHTML = "";
     }

@@ -6,10 +6,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 14px;
-
-  /* display: flex;
-  flex-direction: column;
-  min-height: 35vh; */
 }
 
 header {
@@ -21,7 +17,6 @@ header {
 main {
   width: 85%;
   max-width: 675px;
-  /* height: 100%; */
   padding: 1em;
   border-radius: 4px;
   margin: 0 auto;
@@ -31,7 +26,6 @@ main {
 
   display: flex;
   flex-direction: column;
-  /* min-height: 35vh; */
   min-height: 170px;
 }
 
@@ -45,6 +39,7 @@ form {
 input {
   height: 36px;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 input[type = text] {
@@ -56,7 +51,7 @@ input[type = text] {
   background-color: rgba(245, 245, 245, 0.5);
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25em;
-  transition: box-shadow 0.3s, border 0.3s;
+  
 }
 
 input[type="text"]:focus {
@@ -71,6 +66,10 @@ input[type="submit"] {
   background: rgb(26, 188, 156);
   color: #fff;
   /* line-height: 2.8em; */
+}
+
+input[type="submit"]:focus {
+  background: rgb(0, 177, 117);
 }
 
 #listing {
@@ -139,12 +138,6 @@ a:focus::after {
 @media all and (min-width: 360px) {
   .tile .info p + p {
     margin-left: auto;
-}
-}
-
-@media all and (max-width: 359px) {
-  .tile .info {
-    flex-direction: column;
   }
 }
 
@@ -160,5 +153,11 @@ a:focus::after {
   }
   .tile {
     width: 80%;
+  }
+}
+
+@media all and (max-width: 359px) {
+  .tile .info {
+    flex-direction: column;
   }
 }
