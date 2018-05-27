@@ -8,11 +8,17 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.ico">
   <title>Github Search API</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
+
+  <header>
     <h1>Github Search API</h1>
+    <p>Search for the top 3 Repositories of your favourite language, created in the last month!</p>
+  </header>
+
+  <main>
     <form id="form" action="#" method="get">
       <input id="input" type="text"> <input type="submit" value="Search">
     </form>
@@ -23,10 +29,12 @@
     </section>
 
     <section id="repos">
-      
+        
     </section>
   </main>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script> -->
+
   <script src="dist/bundle.js"></script>
 </body>
 </html>
+
+<!-- <div class="tile"><a href="https://github.com/OpenOrbis/mira-project" target="_blank">OpenOrbis/mira-project</a><p>The Homebrew Platform</p><div class="info"><p>Created: 11th September 2018</p><p>Stars: 153</p></div></div> -->

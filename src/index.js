@@ -4,11 +4,7 @@ import moment from "moment";
 const oneMonthAgo = moment().subtract(1, 'month').format("YYYY-MM-DD");
 const oneMonthFormat = moment().subtract(1, 'month').format('Do MMMM YYYY');
 console.log(oneMonthAgo);
-console.log(oneMonthFormat)
-
-// get the search query ready, with the inputted date
-// and empty string
-// let query = "";
+console.log(oneMonthFormat);
 
 const form = document.getElementById("form");
 const input = document.getElementById("input");
@@ -31,7 +27,7 @@ form.onsubmit = () => {
   else {
     const fullQuery = `${url}+language:${query}`;
     console.log(url);
-    request.open('GET', url, true);
+    request.open("GET", url, true);
 
     const heading = document.getElementById("heading");
     const monthListing = document.querySelector(".month-listing");
@@ -44,7 +40,7 @@ form.onsubmit = () => {
   return false;
 };
 
-request.onreadystatechange = function() {
+request.onreadystatechange = function(e) {
   if (this.readyState == 4 && this.status == 200) {
     // Parse JSON
     const json = JSON.parse(this.responseText);
@@ -57,68 +53,58 @@ request.onreadystatechange = function() {
         aHref: myArr[i].html_url,
         aVal: myArr[i].full_name,
         pDesc: myArr[i].description,
-        pDate: myArr[i].created_at,
+        pDate: moment(myArr[i].created_at).format("Do MMMM YYYY"),
         pStars: myArr[i].stargazers_count
       }
 
       for (let val in htmlVal) {
-        console.log(htmlVal[val])
+        console.log(htmlVal[val]);
       }
+      // console.log(moment(htmlVal.pDate).format("Do MMMM YYYY"));
 
+      // This should save some repitition repitition
       function createPTag(text, parent) {
         const ele = document.createElement("p");
         ele.textContent = text;
         parent.appendChild(ele);
       }
 
+      // Create main tile for repos
       const parentDiv = document.createElement("div");
       parentDiv.className = "tile";
 
+      // Adding the link
       const aTag = document.createElement("a");
-      aTag.href = htmlVal.ahref;
-      aTag.textContent = htmlVal.aVal;
+      aTag.setAttribute("href", myArr[i].html_url);
+      aTag.setAttribute("target", "_blank");
+      aTag.textContent = myArr[i].full_name;
       parentDiv.appendChild(aTag);
 
-      // const desc = document.createElement("p");
-      // desc.textContent = htmlVal.pDesc;
-      // parentDiv.appendChild(desc);
+      // Add main description
+      createPTag(myArr[i].description, parentDiv);
 
-      createPTag(htmlVal.pDesc, parentDiv);
-
+      // Create child div for extra info
       const childDiv = document.createElement("div");
       childDiv.className = "info";
 
-      createPTag(htmlVal.pDate, childDiv);
-      createPTag(htmlVal.pStars, childDiv);
+      // Populate with info...
+      const repoDate = moment(myArr[i].created_at).format("Do MMMM YYYY");
+      createPTag(`Created: ${repoDate}`, childDiv);
+      createPTag(`Stars: ${myArr[i].stargazers_count}`, childDiv);
 
-      // const pOne = document.createElement("p");
-      // pOne.textContent = htmlVal.pDate;
-      // childDiv.appendChild
-
-      // const pTwo = document.createElement("p");
-      // pTwo.textContent = htmlVal.pStars;
-
-
+      // And add to the parent
       parentDiv.appendChild(childDiv);
 
+      // Now show me the money!
       const repos = document.getElementById("repos");
       repos.appendChild(parentDiv);
     }
   }
+  else {
+    console.log("There was an error: ", e);
+  }
 };
 
-
-
-// request.onload = function() {
-//   if (request.status >= 200 && request.status < 400) {
-//     // Success!
-//     var data = JSON.parse(request.responseText);
-//   } else {
-//     // We reached our target server, but it returned an error
-
-//   }
-// };
-
-// request.onerror = function() {
-//   alert("there was an error, GO BACK... GO BACK!")
-// };
+request.onerror = function() {
+  alert("there was an error, SQUISH THOSE BUGS!!")
+};
