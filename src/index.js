@@ -21,7 +21,7 @@ form.onsubmit = () => {
   const query = input.value;
   console.log(query);
 
-  let url = `https://api.github.com/search/repositories?q=language:${query}+created:>${oneMonthAgo}&sort=stars`;
+  const url = `https://api.github.com/search/repositories?q=language:${query}+created:>${oneMonthAgo}&sort=stars`;
 
   // check if input contains empty string
   // if it does, throw alert
@@ -44,28 +44,26 @@ form.onsubmit = () => {
 };
 
 request.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
+  // if (this.readyState == 4 && this.status == 200) {
+  if (this.readyState == 4) {
     // Parse JSON
     const json = JSON.parse(this.responseText);
     const myArr = json.items;
     console.log(myArr);
 
     for (let i = 0; i <= 2; i++) {
-      console.log(myArr[i]);
-      console.log(myArr[i].full_name);
-      console.log(myArr[i].created_at);
-      console.log(myArr[i].language);
 
-      let htmlVal = {
+      const htmlVal = {
         aHref: myArr[i].html_url,
         aVal: myArr[i].full_name,
         pDesc: myArr[i].description,
         pDate: myArr[i].created_at,
         pStars: myArr[i].stargazers_count
       }
-      console.log(htmlVal)
 
-
+      for (let val in htmlVal) {
+        console.log(htmlVal[val])
+      }
     }
   }
 };
