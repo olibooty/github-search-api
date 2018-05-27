@@ -66,7 +66,7 @@ request.onreadystatechange = function(e) {
 
       // Create main tile for repos
       const parentDiv = document.createElement("div");
-      parentDiv.className = "tile";
+      parentDiv.setAttribute("class", "tile");
 
       // Adding the link
       const aTag = document.createElement("a");
@@ -80,7 +80,7 @@ request.onreadystatechange = function(e) {
 
       // Create child div for extra info
       const childDiv = document.createElement("div");
-      childDiv.className = "info";
+      childDiv.setAttribute("class", "info");
 
       // Populate with info...
       const repoDate = moment(myArr[i].created_at).format("Do MMMM YYYY");
