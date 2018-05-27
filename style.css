@@ -68,6 +68,7 @@ input[type="submit"] {
   /* line-height: 2.8em; */
 }
 
+input[type="submit"]:hover,
 input[type="submit"]:focus {
   background: rgb(0, 177, 117);
 }
