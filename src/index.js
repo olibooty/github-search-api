@@ -47,6 +47,7 @@ request.onreadystatechange = function(e) {
     const myArr = json.items;
     console.log(myArr);
 
+    // Here's the fun stuff...
     for (let i = 0; i <= 2; i++) {
       // Created object to hold repo values
       const htmlVal = {
@@ -60,7 +61,6 @@ request.onreadystatechange = function(e) {
       for (let val in htmlVal) {
         console.log(htmlVal[val]);
       }
-      // console.log(moment(htmlVal.pDate).format("Do MMMM YYYY"));
 
       // This should save some repitition repitition
       function createPTag(text, parent) {
