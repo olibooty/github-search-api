@@ -42,6 +42,11 @@ form {
   align-content: stretch;
 }
 
+input {
+  height: 36px;
+  box-sizing: border-box;
+}
+
 input[type = text] {
   max-width: 8em;
   padding: 0.25em;
@@ -61,10 +66,11 @@ input[type="text"]:focus {
 
 input[type="submit"] {
   border: none;
+  border-radius: 0 3px 3px 0;
   margin-right: auto;
   background: rgb(26, 188, 156);
   color: #fff;
-  line-height: 2.8em;
+  /* line-height: 2.8em; */
 }
 
 #listing {
